@@ -119,7 +119,7 @@ async def remind(interaction: discord.Interaction, message: str, minutes: int):
 @bot.tree.command(name="coinflip", description="Flip a coin")
 async def coinflip(interaction: discord.Interaction):
     result = random.choice(["Heads", "Tails"])
-    await interaction.response.send_message(f"🪙 The coin landed on **{result}**!")
+    await interaction.response.send_message(f"<:Pokecoin:1358588024438395012> The coin landed on **{result}**!")
 
 # Run the bot using environment variable
 bot.run(os.getenv("DISCORD_BOT_TOKEN"))
