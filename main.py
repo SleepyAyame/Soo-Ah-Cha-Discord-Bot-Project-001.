@@ -6,7 +6,6 @@ from datetime import datetime, timedelta
 import asyncio
 import pytz
 import os
-bot.run(os.getenv("DISCORD_BOT_TOKEN"))
 
 # Replace with your actual image channel ID
 IMAGE_CHANNEL_ID = 847169382920618034
@@ -115,6 +114,6 @@ async def remind(interaction: discord.Interaction, message: str, minutes: int):
 
     bot.loop.create_task(send_reminder())
 
-# Run the bot
-import os
+# Run the bot using environment variable
 bot.run(os.getenv("DISCORD_BOT_TOKEN"))
+
