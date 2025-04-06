@@ -121,6 +121,19 @@ async def coinflip(interaction: discord.Interaction):
     result = random.choice(["Heads", "Tails"])
     await interaction.response.send_message(f"<:Pokecoin:1358588024438395012> The coin landed on **{result}**!")
 
+# Slash command: /avatar [user]
+@bot.tree.command(name="avatar", description="Show a user's avatar")
+@app_commands.describe(user="The user whose avatar you want to view")
+async def avatar(interaction: discord.Interaction, user: discord.User = None):
+    user = user or interaction.user
+    embed = discord.Embed(
+        title=f"{user.name}'s Avatar",
+        color=discord.Color.blurple()
+    )
+    embed.set_image(url=user.display_avatar.url)
+    await interaction.response.send_message(embed=embed)
+
+
 # Run the bot using environment variable
 bot.run(os.getenv("DISCORD_BOT_TOKEN"))
 
