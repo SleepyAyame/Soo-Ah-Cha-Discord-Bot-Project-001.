@@ -116,4 +116,5 @@ async def remind(interaction: discord.Interaction, message: str, minutes: int):
     bot.loop.create_task(send_reminder())
 
 # Run the bot
-bot.run("MTM1ODQ1NzI4NzI0MDMyMzM2Ng.G7KtK4.UV9YGBWNQJ89EUecWIhCoAoIh7OWn0Vya0A-Wc")
+import os
+bot.run(os.getenv("DISCORD_BOT_TOKEN"))
