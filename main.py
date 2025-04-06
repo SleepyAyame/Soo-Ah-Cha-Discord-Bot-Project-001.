@@ -5,6 +5,8 @@ from collections import defaultdict
 from datetime import datetime, timedelta
 import asyncio
 import pytz
+import os
+bot.run(os.getenv("DISCORD_BOT_TOKEN"))
 
 # Replace with your actual image channel ID
 IMAGE_CHANNEL_ID = 847169382920618034
