@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 import asyncio
 import pytz
 import os
+import random
 
 # Replace with your actual image channel ID
 IMAGE_CHANNEL_ID = 847169382920618034
@@ -113,6 +114,12 @@ async def remind(interaction: discord.Interaction, message: str, minutes: int):
         await interaction.followup.send(f"🔔 Reminder: {message}", ephemeral=True)
 
     bot.loop.create_task(send_reminder())
+
+# Slash command: /coinflip
+@bot.tree.command(name="coinflip", description="Flip a coin")
+async def coinflip(interaction: discord.Interaction):
+    result = random.choice(["Heads", "Tails"])
+    await interaction.response.send_message(f"🪙 The coin landed on **{result}**!")
 
 # Run the bot using environment variable
 bot.run(os.getenv("DISCORD_BOT_TOKEN"))
