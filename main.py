@@ -123,27 +123,6 @@ async def coinflip(interaction: discord.Interaction):
     result = random.choice(["Heads", "Tails"])
     await interaction.response.send_message(f"<:Pokecoin:1358588024438395012> The coin landed on **{result}**!")
 
-# New feature: Announce when a user with "GOD" role goes live on Twitch or YouTube
-@bot.event
-async def on_member_update(before, after):
-    # Check if the user started streaming (went live)
-    if before.activity != after.activity and isinstance(after.activity, discord.Streaming):
-        # Check if the user has the "GOD" role
-        if any(role.name == "GOD" for role in after.roles):
-            # Get the platform (Twitch/YouTube) and URL
-            platform = after.activity.name  # 'Twitch' or 'YouTube'
-            url = after.activity.url
-            
-            # Check if it's Twitch or YouTube and send a formatted message accordingly
-            channel = bot.get_channel(833474110481760318)
-            if channel:
-                if platform == "Twitch":
-                    await channel.send(f"🚨 **{after.name}** is now live on **Twitch**! Watch them stream: {url}")
-                elif platform == "YouTube":
-                    await channel.send(f"🚨 **{after.name}** is now live on **YouTube**! Watch them stream: {url}")
-                else:
-                    await channel.send(f"🚨 **{after.name}** is now live! Check out their stream: {url}")
-
 # Run the bot using environment variable
 bot.run(os.getenv("DISCORD_BOT_TOKEN"))
 
