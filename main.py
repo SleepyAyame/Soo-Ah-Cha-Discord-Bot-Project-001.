@@ -8,8 +8,7 @@ import pytz
 import os
 import random
 from dotenv import load_dotenv
-
-load_dotenv()  # Initialize loading
+load_dotenv("secrets.env")
 
 image_channel_ids_str = os.getenv("IMAGE_CHANNEL_IDS", "")
 if image_channel_ids_str:
