@@ -11,8 +11,12 @@ from dotenv import load_dotenv
 
 load_dotenv()  # Initialize loading
 
-# Load image channel IDs from environment variable
-IMAGE_CHANNEL_IDS = set(map(int, os.getenv("IMAGE_CHANNEL_IDS", "").split(",")))
+image_channel_ids_str = os.getenv("IMAGE_CHANNEL_IDS", "")
+if image_channel_ids_str:
+    IMAGE_CHANNEL_IDS = set(map(int, image_channel_ids_str.split(",")))
+else:
+    IMAGE_CHANNEL_IDS = set()
+
 
 # Use full custom emoji format: <name:id>
 UPVOTE_EMOJI = "<:ryoucool:1358473086017605733>"
